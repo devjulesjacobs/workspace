@@ -2263,6 +2263,191 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SlideFaq",
+  data: function data() {
+    return {
+      form: {
+        create: {
+          question: null,
+          answer: null
+        }
+      }
+    };
+  },
+  mounted: function mounted() {},
+  methods: {
+    createFaq: function createFaq() {
+      var _this = this;
+
+      axios.post('/api/faqs', this.form.create).then(function (res) {
+        _this.$emit('refresh');
+
+        _this.$emit('hide');
+      })["catch"](function (err) {});
+    },
+    updateFaq: function updateFaq(id) {
+      var _this2 = this;
+
+      axios.patch('/api/faq/' + id, this.editFaq).then(function (res) {
+        _this2.$emit('refresh');
+
+        _this2.$emit('hide');
+      });
+    },
+    hideSlide: function hideSlide() {
+      this.$emit('hide');
+    }
+  },
+  props: {
+    views: {
+      create: false,
+      edit: false
+    },
+    editFaq: {
+      question: null,
+      answer: null
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/cms/components/ModalPostCreate/ModalPostCreate.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/cms/components/ModalPostCreate/ModalPostCreate.vue?vue&type=script&lang=js& ***!
@@ -2636,14 +2821,96 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_FaqSlideCreate_SlideFaq__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/FaqSlideCreate/SlideFaq */ "./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue");
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Faq"
+  name: "Faq",
+  data: function data() {
+    return {
+      faqs: [],
+      editFaq: [],
+      slide: {
+        show: false,
+        views: {
+          create: false,
+          edit: false
+        }
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.getFaqs();
+  },
+  methods: {
+    getFaqs: function getFaqs() {
+      var _this = this;
+
+      axios.get('/api/faqs').then(function (res) {
+        _this.faqs = res.data;
+      });
+    },
+    showSlide: function showSlide(type) {
+      // Set defaults
+      this.slide.views.create = false;
+      this.slide.views.edit = false; // Set show
+
+      this.slide.views[type] = true; // Show slide
+
+      this.slide.show = true;
+    },
+    setEditFaq: function setEditFaq(id) {
+      var _this2 = this;
+
+      axios.get('/api/faq/' + id).then(function (res) {
+        _this2.editFaq = res.data;
+
+        _this2.showSlide('edit');
+      });
+    },
+    hideSlide: function hideSlide() {
+      this.slide.show = false;
+    }
+  },
+  components: {
+    SlideFaq: _components_FaqSlideCreate_SlideFaq__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
@@ -40053,6 +40320,517 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=template&id=842641b0&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=template&id=842641b0&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "fixed inset-0 overflow-hidden z-50",
+      attrs: {
+        "aria-labelledby": "slide-over-title",
+        role: "dialog",
+        "aria-modal": "true",
+      },
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "absolute inset-0 overflow-hidden bg-gray-500 bg-opacity-75 transition-opacity",
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "absolute inset-0",
+              attrs: { "aria-hidden": "true" },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "fixed inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16",
+                },
+                [
+                  _vm.views.create
+                    ? _c("div", { staticClass: "w-screen max-w-2xl" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll",
+                          },
+                          [
+                            _c("div", { staticClass: "px-6 mb-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "flex items-start justify-between",
+                                },
+                                [
+                                  _c(
+                                    "h2",
+                                    {
+                                      staticClass:
+                                        "text-lg font-medium text-gray-900",
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Nieuwe FAQ\n                                "
+                                      ),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "ml-3 h-7 flex items-center",
+                                    },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                                          attrs: { type: "button" },
+                                          on: { click: _vm.hideSlide },
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "sr-only" },
+                                            [_vm._v("Close panel")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "svg",
+                                            {
+                                              staticClass: "h-6 w-6",
+                                              attrs: {
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg",
+                                                fill: "none",
+                                                viewBox: "0 0 24 24",
+                                                stroke: "currentColor",
+                                                "aria-hidden": "true",
+                                              },
+                                            },
+                                            [
+                                              _c("path", {
+                                                attrs: {
+                                                  "stroke-linecap": "round",
+                                                  "stroke-linejoin": "round",
+                                                  "stroke-width": "2",
+                                                  d: "M6 18L18 6M6 6l12 12",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "form",
+                              {
+                                attrs: {
+                                  method: "post",
+                                  enctype: "multipart/form-data",
+                                },
+                              },
+                              [
+                                _c("div", { staticClass: "px-6 mb-6" }, [
+                                  _c("div", { staticClass: "sm:col-span-3" }, [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "block text-sm font-medium text-gray-700",
+                                        attrs: { for: "first-name" },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        Question\n                                    "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "mt-1" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.create.question,
+                                            expression: "form.create.question",
+                                          },
+                                        ],
+                                        staticClass:
+                                          "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
+                                        attrs: { type: "text", required: "" },
+                                        domProps: {
+                                          value: _vm.form.create.question,
+                                        },
+                                        on: {
+                                          input: function ($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.form.create,
+                                              "question",
+                                              $event.target.value
+                                            )
+                                          },
+                                        },
+                                      }),
+                                    ]),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "px-6 mb-6" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "block text-sm font-medium text-gray-700",
+                                      attrs: { for: "about" },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Answer\n                                "
+                                      ),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "mt-1" }, [
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.form.create.answer,
+                                          expression: "form.create.answer",
+                                        },
+                                      ],
+                                      staticClass:
+                                        "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md py-2 px-3",
+                                      attrs: { rows: "6" },
+                                      domProps: {
+                                        value: _vm.form.create.answer,
+                                      },
+                                      on: {
+                                        input: function ($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.form.create,
+                                            "answer",
+                                            $event.target.value
+                                          )
+                                        },
+                                      },
+                                    }),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: "mt-2 text-sm text-gray-500",
+                                    },
+                                    [_vm._v("Het antwoord op de vraag.")]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "px-6" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function ($event) {
+                                          $event.preventDefault()
+                                          return _vm.createFaq.apply(
+                                            null,
+                                            arguments
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Aanmaken\n                                "
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.views.edit
+                    ? _c("div", { staticClass: "w-screen max-w-2xl" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll",
+                          },
+                          [
+                            _c("div", { staticClass: "px-6 mb-6" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "flex items-start justify-between",
+                                },
+                                [
+                                  _c(
+                                    "h2",
+                                    {
+                                      staticClass:
+                                        "text-lg font-medium text-gray-900",
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Edit FAQ\n                                "
+                                      ),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "ml-3 h-7 flex items-center",
+                                    },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                                          attrs: { type: "button" },
+                                          on: { click: _vm.hideSlide },
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "sr-only" },
+                                            [_vm._v("Close panel")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "svg",
+                                            {
+                                              staticClass: "h-6 w-6",
+                                              attrs: {
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg",
+                                                fill: "none",
+                                                viewBox: "0 0 24 24",
+                                                stroke: "currentColor",
+                                                "aria-hidden": "true",
+                                              },
+                                            },
+                                            [
+                                              _c("path", {
+                                                attrs: {
+                                                  "stroke-linecap": "round",
+                                                  "stroke-linejoin": "round",
+                                                  "stroke-width": "2",
+                                                  d: "M6 18L18 6M6 6l12 12",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "form",
+                              {
+                                attrs: {
+                                  method: "post",
+                                  enctype: "multipart/form-data",
+                                },
+                              },
+                              [
+                                _c("div", { staticClass: "px-6 mb-6" }, [
+                                  _c("div", { staticClass: "sm:col-span-3" }, [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "block text-sm font-medium text-gray-700",
+                                        attrs: { for: "first-name" },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        Question\n                                    "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "mt-1" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.editFaq.question,
+                                            expression: "editFaq.question",
+                                          },
+                                        ],
+                                        staticClass:
+                                          "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
+                                        attrs: { type: "text", required: "" },
+                                        domProps: {
+                                          value: _vm.editFaq.question,
+                                        },
+                                        on: {
+                                          input: function ($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.editFaq,
+                                              "question",
+                                              $event.target.value
+                                            )
+                                          },
+                                        },
+                                      }),
+                                    ]),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "px-6 mb-6" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "block text-sm font-medium text-gray-700",
+                                      attrs: { for: "about" },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Answer\n                                "
+                                      ),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "mt-1" }, [
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.editFaq.answer,
+                                          expression: "editFaq.answer",
+                                        },
+                                      ],
+                                      staticClass:
+                                        "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md py-2 px-3",
+                                      attrs: { rows: "6" },
+                                      domProps: { value: _vm.editFaq.answer },
+                                      on: {
+                                        input: function ($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.editFaq,
+                                            "answer",
+                                            $event.target.value
+                                          )
+                                        },
+                                      },
+                                    }),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: "mt-2 text-sm text-gray-500",
+                                    },
+                                    [_vm._v("Het antwoord op de vraag.")]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "px-6" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function ($event) {
+                                          $event.preventDefault()
+                                          return _vm.updateFaq(_vm.editFaq.id)
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Opslaan\n                                "
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ])
+                    : _vm._e(),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/cms/components/ModalPostCreate/ModalPostCreate.vue?vue&type=template&id=3abb9464&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/cms/components/ModalPostCreate/ModalPostCreate.vue?vue&type=template&id=3abb9464&scoped=true& ***!
@@ -40732,25 +41510,130 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "Faq" } }, [
+  return _c(
+    "div",
+    { attrs: { id: "Faq" } },
+    [
+      _c(
+        "button",
+        {
+          staticClass:
+            "bg-blue-theme float-right mt-2 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-theme",
+          attrs: { type: "button" },
+          on: {
+            click: function ($event) {
+              return _vm.showSlide("create")
+            },
+          },
+        },
+        [
+          _vm._v("\n        Nieuwe FAQ\n        "),
+          _c(
+            "svg",
+            {
+              staticClass: "h-5 w-5 ml-2",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 20 20",
+                fill: "currentColor",
+              },
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "fill-rule": "evenodd",
+                  d: "M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z",
+                  "clip-rule": "evenodd",
+                },
+              }),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
       _c(
         "h1",
         {
           staticClass:
             "text-3xl page-title leading-8 font-bold tracking-tight text-gray-900 mb-5",
         },
-        [_vm._v("Faq")]
+        [_vm._v("Frequently asked questions")]
       ),
-    ])
-  },
-]
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "flex", attrs: { "aria-labelledby": "faq-wrapper" } },
+        _vm._l(_vm.faqs, function (faq) {
+          return _c(
+            "div",
+            { key: faq.id, staticClass: "mr-4 rounded-lg overflow-hidden" },
+            [
+              _c("div", { staticClass: "bg-white p-4" }, [
+                _c(
+                  "dt",
+                  { staticClass: "text-base font-medium text-gray-900" },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(faq.question) +
+                        "\n                "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("dd", { staticClass: "mt-3 text-sm text-gray-500" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(faq.answer) +
+                      "\n                "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "bg-gray-100 p-4" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.setEditFaq(faq.id)
+                      },
+                    },
+                  },
+                  [_vm._v("\n                    Bewerken\n                ")]
+                ),
+              ]),
+            ]
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("SlideFaq", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.slide.show,
+            expression: "slide.show",
+          },
+        ],
+        attrs: { views: _vm.slide.views, editFaq: _vm.editFaq },
+        on: {
+          refresh: _vm.getFaqs,
+          hide: function ($event) {
+            return _vm.hideSlide("create")
+          },
+        },
+      }),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40780,7 +41663,7 @@ var render = function () {
         "button",
         {
           staticClass:
-            "float-right mt-2 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-theme",
+            "bg-blue-theme float-right mt-2 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-blue-theme",
           attrs: { type: "button" },
           on: {
             click: function ($event) {
@@ -57941,6 +58824,75 @@ _store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch("cms/setValues").then(fu
     store: _store__WEBPACK_IMPORTED_MODULE_2__["default"]
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SlideFaq_vue_vue_type_template_id_842641b0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SlideFaq.vue?vue&type=template&id=842641b0&scoped=true& */ "./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=template&id=842641b0&scoped=true&");
+/* harmony import */ var _SlideFaq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SlideFaq.vue?vue&type=script&lang=js& */ "./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SlideFaq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SlideFaq_vue_vue_type_template_id_842641b0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SlideFaq_vue_vue_type_template_id_842641b0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "842641b0",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/cms/components/FaqSlideCreate/SlideFaq.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SlideFaq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SlideFaq.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SlideFaq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=template&id=842641b0&scoped=true&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=template&id=842641b0&scoped=true& ***!
+  \************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SlideFaq_vue_vue_type_template_id_842641b0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SlideFaq.vue?vue&type=template&id=842641b0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/cms/components/FaqSlideCreate/SlideFaq.vue?vue&type=template&id=842641b0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SlideFaq_vue_vue_type_template_id_842641b0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SlideFaq_vue_vue_type_template_id_842641b0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

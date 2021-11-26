@@ -22,7 +22,7 @@
 
 body {
     background-color: #fafbfe !important;
-    font-family: $font-family-apple !important;
+    //font-family: $font-family-apple !important;
 
     .router-link-exact-active {
         background-color: $theme_blue;
@@ -41,17 +41,7 @@ body {
             }
         }
     }
-}
 
-.btn-primary {
-    color: #fff;
-    background-color: purple;
-    border-color: purple;
-
-    &:hover {
-        color: #fff;
-        background-color: rgb(80, 0, 80);
-        border-color: rgb(80, 0, 80);
-    }
+    .bg-blue-theme { background: $theme_blue }
 }
 

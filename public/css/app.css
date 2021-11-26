@@ -32108,7 +32108,6 @@ video {
 
 body {
   background-color: #fafbfe !important;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
 
 body .router-link-exact-active {
@@ -32129,16 +32128,8 @@ body .router-link-exact-active:hover svg {
   color: #fff !important;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: purple;
-  border-color: purple;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #500050;
-  border-color: #500050;
+body .bg-blue-theme {
+  background: #2C55A2;
 }
 
 @media (min-width: 640px) {

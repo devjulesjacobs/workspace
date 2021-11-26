@@ -26,3 +26,9 @@ Route::post('/posts', [App\Http\Controllers\PostController::class, 'store']);
 Route::get('/posts', [\App\Http\Controllers\PostController::class, 'getAll']);
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show']);
 Route::patch('/post/{id}', [App\Http\Controllers\PostController::class, 'update']);
+
+// Faq
+Route::post('/faqs', [\App\Http\Controllers\FaqController::class, 'store']);
+Route::get('/faqs', [\App\Http\Controllers\FaqController::class, 'index']);
+Route::get('/faq/{id}', [\App\Http\Controllers\FaqController::class, 'show']);
+route::patch('/faq/{id}', [\App\Http\Controllers\FaqController::class, 'update']);
