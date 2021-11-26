@@ -1,0 +1,27 @@
+.BottomNav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    background: white;
+    border-top: 1px solid #f2f2f2;
+
+    a.nav-item {
+        padding-top: 10px;
+        font-size: 12px;
+        color: #afafaf !important;
+
+        .icon {
+            font-size: 18px;
+            color: #afafaf !important;
+        }
+
+        &.router-link-exact-active {
+            color: $theme_blue !important;
+
+            .icon {color: $theme_blue !important;}
+        }
+
+    }
+}

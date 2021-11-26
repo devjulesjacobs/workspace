@@ -1,0 +1,8 @@
+#Posts {
+    button.bg-blue-theme {
+        background: #2C55A2;
+        &:hover {
+            background: darken(#2C55A2, 10%);
+        }
+    }
+}

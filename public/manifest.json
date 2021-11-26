@@ -1,0 +1,19 @@
+{
+    "name": "Change= Workspace",
+    "short_name": "Change= Workspace",
+    "icons": [
+        {
+            "src": "/img/pwa/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#000",
+    "description": "Nedkab App",
+    "dir": "ltr",
+    "lang": "en-US"
+}

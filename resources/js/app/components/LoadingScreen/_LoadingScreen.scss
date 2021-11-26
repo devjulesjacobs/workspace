@@ -1,0 +1,47 @@
+#LoadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    //background: black;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+
+    &.show {
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+
+        .card {
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+    }
+    .card {
+        font-size: 2rem;
+        height: 0;
+        overflow: hidden;
+        position: relative;
+        width: 0;
+    }
+    .card:before {
+        background-color: rgba(14, 14, 14, 0.8);
+        backdrop-filter: blur(4px) saturate(100%) contrast(45%) brightness(130%);
+        content: '';
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+    .card__text {
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        font-size: 16px;
+    }
+}

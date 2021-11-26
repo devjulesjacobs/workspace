@@ -1,0 +1,42 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-apple: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+// Theme
+$theme_blue: #2C55A2;
+$theme_orange: #EF7D00;
+
+// Vars
+$background-color: #f5f4f6;
+$state_padding: 15px;
+
+// Breakpoints
+$breakpoint_phone: 450px;
+$breakpoint_tablet: 1050px;
+$breakpoint_iphoneX_height: 800px;
+
+// Navbars
+$top_navbar_height: 50px;
+$bottom_navbar_height: 50px;
+$navbar_line_color: #e1e1e1;
+
+// Z-Indexes
+$zindex_navbars: 99999999;
+
